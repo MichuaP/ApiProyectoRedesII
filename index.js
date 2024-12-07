@@ -1,22 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const misRutas = require('./routes/rutas');
+
 const app = express();
-const axios = require('axios');
-require('dotenv').config(); // Para variables de entorno
+const port = process.env.PORT || 3000;
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
+app.use('/',misRutas);
 
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('Backend running...');
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-//Obtener información del NFS
-
-//Subir información del NFS
-
-//Nube

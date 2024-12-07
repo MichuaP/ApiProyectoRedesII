@@ -8,12 +8,7 @@
         {
             "IdAutor": 2,
             "IdPais": 1,
-            "IdUser": 102
-        },
-        {
-            "IdAutor": 3,
-            "IdPais": 1,
-            "IdUser": 103
+            "IdUser": 3
         }
     ]
 }
