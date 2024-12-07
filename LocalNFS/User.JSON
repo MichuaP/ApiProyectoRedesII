@@ -1,0 +1,34 @@
+{
+    "Users":[
+        {
+            "IdUser": 1,
+            "Nombre": "Administrador",
+            "ApePat": null,
+            "ApeMat": null,
+            "Alias": "admin",
+            "Contraseña": "admin",
+            "Correo": null,
+            "TipoUsuario": 0
+        },
+        {
+            "IdUser": 2,
+            "Nombre": "Paula Michelle",
+            "ApePat": "Cruz",
+            "ApeMat": "Lira",
+            "Alias": "michu",
+            "Contraseña": "paula123",
+            "Correo": "al261210@edu.uaa.mx",
+            "TipoUsuario": 1
+        },
+        {
+            "IdUser": 3,
+            "Nombre": "Nadia Montserrat",
+            "ApePat": "Acosta",
+            "ApeMat": "Miranda",
+            "Alias": "nadia",
+            "Contraseña": "nadia123",
+            "Correo": "al33578@edu.uaa.mx",
+            "TipoUsuario": 1
+        }
+    ]
+}
