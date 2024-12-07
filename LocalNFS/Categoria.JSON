@@ -1,0 +1,60 @@
+{
+  "Categorias": [
+    {
+      "IdCategoria": 1,
+      "Nombre": "Arte"
+    },
+    {
+      "IdCategoria": 2,
+      "Nombre": "Negocios"
+    },
+    {
+      "IdCategoria": 3,
+      "Nombre": "Moda"
+    },
+    {
+      "IdCategoria": 4,
+      "Nombre": "Comida"
+    },
+    {
+      "IdCategoria": 5,
+      "Nombre": "Salud"
+    },
+    {
+      "IdCategoria": 6,
+      "Nombre": "Hogar"
+    },
+    {
+      "IdCategoria": 7,
+      "Nombre": "Películas"
+    },
+    {
+      "IdCategoria": 8,
+      "Nombre": "Política"
+    },
+    {
+      "IdCategoria": 9,
+      "Nombre": "Ciencia"
+    },
+    {
+      "IdCategoria": 10,
+      "Nombre": "Deportes"
+    },
+    {
+      "IdCategoria": 11,
+      "Nombre": "Tecnología"
+    },
+    {
+      "IdCategoria": 12,
+      "Nombre": "Teatro"
+    },
+    {
+      "IdCategoria": 13,
+      "Nombre": "Viajes"
+    },
+    {
+      "IdCategoria": 14,
+      "Nombre": "Mundo"
+    }
+  ]
+}

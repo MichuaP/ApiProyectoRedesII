@@ -1,0 +1,19 @@
+{
+    "Autores": [
+        {
+            "IdAutor": 1,
+            "IdPais": 1,
+            "IdUser": 2
+        },
+        {
+            "IdAutor": 2,
+            "IdPais": 1,
+            "IdUser": 102
+        },
+        {
+            "IdAutor": 3,
+            "IdPais": 1,
+            "IdUser": 103
+        }
+    ]
+}

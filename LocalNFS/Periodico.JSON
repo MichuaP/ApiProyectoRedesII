@@ -1,0 +1,34 @@
+{
+    "Periodicos": [
+        {
+            "IdPeriodico": 1,
+            "Nombre": "La Nación",
+            "Url": "https://www.lanacion.com.ar",
+            "IdPais": 1
+        },
+        {
+            "IdPeriodico": 2,
+            "Nombre": "El Universal",
+            "Url": "https://www.eluniversal.com.mx",
+            "IdPais": 2
+        },
+        {
+            "IdPeriodico": 3,
+            "Nombre": "The New York Times",
+            "Url": "https://www.nytimes.com",
+            "IdPais": 3
+        },
+        {
+            "IdPeriodico": 4,
+            "Nombre": "The Globe and Mail",
+            "Url": "https://www.theglobeandmail.com",
+            "IdPais": 4
+        },
+        {
+            "IdPeriodico": 5,
+            "Nombre": "El País",
+            "Url": "https://elpais.com",
+            "IdPais": 1
+        }
+    ]
+}

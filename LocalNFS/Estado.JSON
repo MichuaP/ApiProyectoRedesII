@@ -1,0 +1,24 @@
+{
+    "Estados": [
+        {
+            "IdEstado": 1,
+            "Nombre": "Buenos Aires",
+            "IdPais": 1
+        },
+        {
+            "IdEstado": 2,
+            "Nombre": "Jalisco",
+            "IdPais": 2
+        },
+        {
+            "IdEstado": 3,
+            "Nombre": "California",
+            "IdPais": 3
+        },
+        {
+            "IdEstado": 4,
+            "Nombre": "Ontario",
+            "IdPais": 4
+        }
+    ]
+}

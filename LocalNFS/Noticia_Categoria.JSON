@@ -1,0 +1,16 @@
+{
+    "Noticia_Categorias": [
+        {
+            "IdNoticia": 1,
+            "IdCategoria": 3
+        },
+        {
+            "IdNoticia": 2,
+            "IdCategoria": 2
+        },
+        {
+            "IdNoticia": 3,
+            "IdCategoria": 4
+        }
+    ]
+}

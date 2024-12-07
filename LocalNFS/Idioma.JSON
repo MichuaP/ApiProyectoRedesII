@@ -1,0 +1,16 @@
+{
+    "Idiomas": [
+        {
+            "IdIdioma": 1,
+            "Nombre": "Español"
+        },
+        {
+            "IdIdioma": 2,
+            "Nombre": "Inglés"
+        },
+        {
+            "IdIdioma": 3,
+            "Nombre": "Japonés"
+        }
+    ]
+}
