@@ -22,7 +22,7 @@ const loadJSON = (fileName) => {
 };
 
 //Obtener noticias subidas por los usuarios
-router.get('/noticias', (req, res) => {
+router.get('/myNews', (req, res) => {
     try {
         const noticias = loadJSON('Noticia.json').Noticias;
         const periodicos = loadJSON('Periodico.json').Periodicos;
