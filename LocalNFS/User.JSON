@@ -6,8 +6,8 @@
             "ApePat": null,
             "ApeMat": null,
             "Alias": "admin",
-            "Contraseña": "admin",
-            "Correo": null,
+            "Contrasena": "admin",
+            "Correo": "admin@gmail.com",
             "TipoUsuario": 0
         },
         {
@@ -16,9 +16,9 @@
             "ApePat": "Cruz",
             "ApeMat": "Lira",
             "Alias": "michu",
-            "Contraseña": "paula123",
+            "Contrasena": "paula123",
             "Correo": "al261210@edu.uaa.mx",
-            "TipoUsuario": 1
+            "TipoUsuario": 2
         },
         {
             "IdUser": 3,
@@ -26,9 +26,9 @@
             "ApePat": "Acosta",
             "ApeMat": "Miranda",
             "Alias": "nadia",
-            "Contraseña": "nadia123",
+            "Contrasena": "nadia123",
             "Correo": "al33578@edu.uaa.mx",
-            "TipoUsuario": 1
+            "TipoUsuario": 2
         }
     ]
 }

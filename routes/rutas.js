@@ -50,10 +50,55 @@ router.get('/myNews', (req, res) => {
     }
 });
 
+//Login
+router.post('/login', (req, res) => {
+    try {
+        const { correo, contrasena } = req.body;
+
+        console.log(correo);
+        console.log(contrasena);
+
+        // Cargar usuarios desde el NFS
+        const usuarios = loadJSON('User.json').Users;
+
+        // Buscar usuario por alias
+        const usuario = usuarios.find(u => u.Correo === correo);
+
+        if (!usuario) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        // Verificar contraseña (por ahora, texto plano)
+        if (usuario.Contrasena !== contrasena) {
+            return res.status(401).json({ error: 'Contraseña incorrecta' });
+        }
+
+        // Crear sesión de usuario
+        const usuarioData = {
+            IdUser: usuario.IdUser,
+            Nombre: usuario.Nombre,
+            Alias: usuario.Alias,
+            Correo: usuario.Correo,
+            Tipo: usuario.Tipo
+        };
+
+        console.log(usuarioData);
+
+        // Enviar datos del usuario
+        res.json({ success: true, usuario: usuarioData });
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
+
+
 
 //Subir información al NFS
 
 
 //Nube
+
+
 
 module.exports = router;

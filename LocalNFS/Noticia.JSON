@@ -9,7 +9,7 @@
         "IdPeriodico": 1,
         "IdLugar": 1,
         "IdPais": 1,
-        "IdAutor": 2,
+        "IdUsuario": 2,
         "IdCategoria": 3,
         "IdIdioma": 1,
         "NumLikes": 0
@@ -23,7 +23,7 @@
         "IdPeriodico": 2,
         "IdLugar": 3,
         "IdPais": 2,
-        "IdAutor": 2,
+        "IdUsuario": 2,
         "IdCategoria": 2,
         "IdIdioma": 1,
         "NumLikes": 0
@@ -37,7 +37,7 @@
         "IdPeriodico": 791,
         "IdLugar": 4,
         "IdPais": 2,
-        "IdAutor": 2,
+        "IdUsuario": 3,
         "IdCategoria": 4,
         "IdIdioma": 1,
         "NumLikes": 0
