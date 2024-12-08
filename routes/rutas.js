@@ -21,9 +21,18 @@ const loadJSON = (fileName) => {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 };
 
-//Obtener noticias subidas por los usuarios
+//Obtener noticias subidas por un usuario
 router.get('/myNews', (req, res) => {
     try {
+        // Obtener el IdUsuario desde los parámetros de consulta
+        const idUsuario = parseInt(req.query.idUsuario, 10);
+
+        console.log("idRecibido: "+idUsuario);
+
+        if (!idUsuario) {
+            return res.status(400).json({ error: 'Falta Id' });
+        }
+
         const noticias = loadJSON('Noticia.json').Noticias;
         const periodicos = loadJSON('Periodico.json').Periodicos;
         const paises = loadJSON('Pais.json').Paises;
@@ -31,8 +40,11 @@ router.get('/myNews', (req, res) => {
         const categorias = loadJSON('Categoria.json').Categorias;
         const idiomas = loadJSON('Idioma.json').Idiomas;
 
+        // Filtrar noticias del usuario
+        const noticiasUsuario = noticias.filter(noticia => noticia.IdUsuario === idUsuario);
+
         // Mapear las referencias
-        const noticiasCompletas = noticias.map((noticia) => {
+        const noticiasCompletas = noticiasUsuario.map((noticia) => {
             return {
                 ...noticia,
                 Periodico: periodicos.find(p => p.IdPeriodico === noticia.IdPeriodico)?.Nombre || "Desconocido",
@@ -82,7 +94,7 @@ router.post('/login', (req, res) => {
             Tipo: usuario.Tipo
         };
 
-        console.log(usuarioData);
+        console.log(usuarioData.Alias+"data");
 
         // Enviar datos del usuario
         res.json({ success: true, usuario: usuarioData });
