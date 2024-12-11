@@ -36,7 +36,6 @@ router.get('/myNews', (req, res) => {
         const noticias = loadJSON('Noticia.json').Noticias;
         const periodicos = loadJSON('Periodico.json').Periodicos;
         const paises = loadJSON('Pais.json').Paises;
-        const autores = loadJSON('Autor.json').Autores;
         const categorias = loadJSON('Categoria.json').Categorias;
         const idiomas = loadJSON('Idioma.json').Idiomas;
 
@@ -49,7 +48,6 @@ router.get('/myNews', (req, res) => {
                 ...noticia,
                 Periodico: periodicos.find(p => p.IdPeriodico === noticia.IdPeriodico)?.Nombre || "Desconocido",
                 Pais: paises.find(p => p.IdPais === noticia.IdPais)?.Nombre || "Desconocido",
-                Autor: autores.find(a => a.IdAutor === noticia.IdAutor)?.Nombre || "Desconocido",
                 Categoria: categorias.find(c => c.IdCategoria === noticia.IdCategoria)?.Nombre || "Desconocido",
                 Idioma: idiomas.find(i => i.IdIdioma === noticia.IdIdioma)?.Nombre || "Desconocido"
             };
