@@ -21,6 +21,12 @@ const loadJSON = (fileName) => {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 };
 
+//Guardar datos JSON en un archivo
+const saveJSON = (fileName, data) => {
+    const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+};
+
 //Obtener noticias subidas por un usuario
 router.get('/myNews', (req, res) => {
     try {
@@ -89,7 +95,7 @@ router.post('/login', (req, res) => {
             Nombre: usuario.Nombre,
             Alias: usuario.Alias,
             Correo: usuario.Correo,
-            Tipo: usuario.Tipo
+            Tipo: usuario.TipoUsuario
         };
 
         console.log(usuarioData.Alias+"data");
@@ -102,7 +108,56 @@ router.post('/login', (req, res) => {
     }
 });
 
+//signup
+router.post('/signup', (req, res) => {
+    try {
+        const { correo, contrasena,apem, apep, alias, nombre} = req.body;
 
+        console.log(correo);
+        console.log(contrasena);
+        console.log(apem);
+        console.log(apep);
+        console.log(alias);
+        console.log(nombre);
+
+        // Cargar usuarios desde el NFS
+        const data = loadJSON('User.json');
+        const usuarios = data.Users;
+
+        // Verificar si el usuario ya existe por correo
+        const usuarioExistente = usuarios.find(u => u.Correo === correo);
+        if (usuarioExistente) {
+            return res.json({ success: false, error: 'El usuario ya existe' });
+        }
+
+        // Generar un nuevo ID para el usuario
+        const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.IdUser)) + 1 : 1;
+
+        // Crear usuario
+        const newUser = {
+            IdUser: nuevoId,
+            Nombre: nombre,
+            ApePat:apep,
+            ApeMat:apem,
+            Alias: alias,
+            Contrasena: contrasena,
+            Correo: correo,
+            TipoUsuario:1
+        };
+
+        // Agregar el nuevo usuario a la lista
+        usuarios.push(newUser);
+
+        // Guardar los datos actualizados en el archivo JSON
+        saveJSON('User.json', { Users: usuarios });
+
+        // Enviar datos del usuario
+        res.json({ success: true, usuario: { IdUser: newUser.IdUser, Nombre: newUser.Nombre, Alias: newUser.Alias, Correo: newUser.Correo } });
+    } catch (error) {
+        console.error('Error during signup:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
 
 //Subir información al NFS
 

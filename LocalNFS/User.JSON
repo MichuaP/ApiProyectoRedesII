@@ -1,34 +1,64 @@
 {
-    "Users":[
-        {
-            "IdUser": 1,
-            "Nombre": "Administrador",
-            "ApePat": null,
-            "ApeMat": null,
-            "Alias": "admin",
-            "Contrasena": "admin",
-            "Correo": "admin@gmail.com",
-            "TipoUsuario": 0
-        },
-        {
-            "IdUser": 2,
-            "Nombre": "Paula Michelle",
-            "ApePat": "Cruz",
-            "ApeMat": "Lira",
-            "Alias": "michu",
-            "Contrasena": "paula123",
-            "Correo": "al261210@edu.uaa.mx",
-            "TipoUsuario": 2
-        },
-        {
-            "IdUser": 3,
-            "Nombre": "Nadia Montserrat",
-            "ApePat": "Acosta",
-            "ApeMat": "Miranda",
-            "Alias": "nadia",
-            "Contrasena": "nadia123",
-            "Correo": "al33578@edu.uaa.mx",
-            "TipoUsuario": 2
-        }
-    ]
+  "Users": [
+    {
+      "IdUser": 1,
+      "Nombre": "Administrador",
+      "ApePat": null,
+      "ApeMat": null,
+      "Alias": "admin",
+      "Contrasena": "admin",
+      "Correo": "admin@gmail.com",
+      "TipoUsuario": 0
+    },
+    {
+      "IdUser": 2,
+      "Nombre": "Paula Michelle",
+      "ApePat": "Cruz",
+      "ApeMat": "Lira",
+      "Alias": "michu",
+      "Contrasena": "paula123",
+      "Correo": "al261210@edu.uaa.mx",
+      "TipoUsuario": 2
+    },
+    {
+      "IdUser": 3,
+      "Nombre": "Nadia Montserrat",
+      "ApePat": "Acosta",
+      "ApeMat": "Miranda",
+      "Alias": "nadia",
+      "Contrasena": "nadia123",
+      "Correo": "al33578@edu.uaa.mx",
+      "TipoUsuario": 2
+    },
+    {
+      "IdUser": 4,
+      "Nombre": "Michelle",
+      "ApePat": "Cruz",
+      "ApeMat": "Lira",
+      "Alias": "Mich",
+      "Contrasena": "mich123",
+      "Correo": "lazypau21@hotmail.com",
+      "TipoUsuario": 1
+    },
+    {
+      "IdUser": 5,
+      "Nombre": "Jak",
+      "ApePat": "Lopez",
+      "ApeMat": "Martinez",
+      "Alias": "Jakk",
+      "Contrasena": "jak123",
+      "Correo": "jak@gmail.com",
+      "TipoUsuario": 1
+    },
+    {
+      "IdUser": 6,
+      "Nombre": "Maria",
+      "ApePat": "Ramírez",
+      "ApeMat": "Arellano",
+      "Alias": "MariaRA",
+      "Contrasena": "maria123",
+      "Correo": "maria@gmail.com",
+      "TipoUsuario": 1
+    }
+  ]
 }
