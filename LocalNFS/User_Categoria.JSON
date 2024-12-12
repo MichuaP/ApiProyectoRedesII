@@ -2,43 +2,66 @@
   "User_Categorias": [
     {
       "IdUser": 2,
-      "IdCategoria": 1
-    },
-    {
-      "IdUser": 2,
-      "IdCategoria": 3
-    },
-    {
-      "IdUser": 2,
-      "IdCategoria": 5
-    },
-    {
-      "IdUser": 2,
-      "IdCategoria": 7
-    },
-    {
-      "IdUser": 2,
-      "IdCategoria": 10
+      "IdCategoria": [
+        [
+          1,
+          3,
+          5,
+          7
+        ]
+      ]
     },
     {
       "IdUser": 3,
-      "IdCategoria": 2
+      "IdCategoria": [
+        [
+          2,
+          4,
+          6,
+          8
+        ]
+      ]
     },
     {
-      "IdUser": 3,
-      "IdCategoria": 4
+      "IdUser": 4,
+      "IdCategoria": [
+        [
+          7,
+          9,
+          12
+        ]
+      ]
     },
     {
-      "IdUser": 3,
-      "IdCategoria": 6
+      "IdUser": 5,
+      "IdCategoria": [
+        [
+          5,
+          8,
+          13
+        ]
+      ]
     },
     {
-      "IdUser": 3,
-      "IdCategoria": 8
+      "IdUser": 6,
+      "IdCategoria": [
+        [
+          1,
+          3,
+          10,
+          14
+        ]
+      ]
     },
     {
-      "IdUser": 3,
-      "IdCategoria": 9
+      "IdUser": 7,
+      "IdCategoria": [
+        [
+          1,
+          4,
+          9
+        ]
+      ]
     },
     {
       "IdUser": 8,
