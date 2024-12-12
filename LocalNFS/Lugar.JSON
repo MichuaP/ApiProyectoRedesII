@@ -1,54 +1,54 @@
 {
-    "Lugares": [
-        {
-            "IdLugar": 1,
-            "Nombre": "Buenos Aires",
-            "IdEstado": 1
-        },
-        {
-            "IdLugar": 2,
-            "Nombre": "Córdoba",
-            "IdEstado": 1
-        },
-        {
-            "IdLugar": 3,
-            "Nombre": "Rosario",
-            "IdEstado": 1
-        },
-        {
-            "IdLugar": 4,
-            "Nombre": "México City",
-            "IdEstado": 2
-        },
-        {
-            "IdLugar": 5,
-            "Nombre": "Guadalajara",
-            "IdEstado": 2
-        },
-        {
-            "IdLugar": 6,
-            "Nombre": "Monterrey",
-            "IdEstado": 2
-        },
-        {
-            "IdLugar": 7,
-            "Nombre": "New York",
-            "IdEstado": 3
-        },
-        {
-            "IdLugar": 8,
-            "Nombre": "Los Angeles",
-            "IdEstado": 3
-        },
-        {
-            "IdLugar": 9,
-            "Nombre": "Chicago",
-            "IdEstado": 3
-        },
-        {
-            "IdLugar": 10,
-            "Nombre": "Toronto",
-            "IdEstado": 4
-        }
-    ]
+  "Lugares": [
+    {
+      "IdLugar": 1,
+      "Nombre": "Buenos Aires",
+      "IdEstado": 1
+    },
+    {
+      "IdLugar": 2,
+      "Nombre": "Córdoba",
+      "IdEstado": 1
+    },
+    {
+      "IdLugar": 3,
+      "Nombre": "Rosario",
+      "IdEstado": 1
+    },
+    {
+      "IdLugar": 4,
+      "Nombre": "México City",
+      "IdEstado": 2
+    },
+    {
+      "IdLugar": 5,
+      "Nombre": "Guadalajara",
+      "IdEstado": 2
+    },
+    {
+      "IdLugar": 6,
+      "Nombre": "Monterrey",
+      "IdEstado": 2
+    },
+    {
+      "IdLugar": 7,
+      "Nombre": "New York",
+      "IdEstado": 3
+    },
+    {
+      "IdLugar": 8,
+      "Nombre": "Los Angeles",
+      "IdEstado": 3
+    },
+    {
+      "IdLugar": 9,
+      "Nombre": "Chicago",
+      "IdEstado": 3
+    },
+    {
+      "IdLugar": 10,
+      "Nombre": "Toronto",
+      "IdEstado": 4
+    }
+  ]
 }

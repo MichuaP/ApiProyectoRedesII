@@ -40,7 +40,6 @@ router.get('/myNews', (req, res) => {
         }
 
         const noticias = loadJSON('Noticia.json').Noticias;
-        const periodicos = loadJSON('Periodico.json').Periodicos;
         const paises = loadJSON('Pais.json').Paises;
         const categorias = loadJSON('Categoria.json').Categorias;
         const idiomas = loadJSON('Idioma.json').Idiomas;
@@ -52,7 +51,6 @@ router.get('/myNews', (req, res) => {
         const noticiasCompletas = noticiasUsuario.map((noticia) => {
             return {
                 ...noticia,
-                Periodico: periodicos.find(p => p.IdPeriodico === noticia.IdPeriodico)?.Nombre || "Desconocido",
                 Pais: paises.find(p => p.IdPais === noticia.IdPais)?.Nombre || "Desconocido",
                 Categoria: categorias.find(c => c.IdCategoria === noticia.IdCategoria)?.Nombre || "Desconocido",
                 Idioma: idiomas.find(i => i.IdIdioma === noticia.IdIdioma)?.Nombre || "Desconocido"
@@ -159,7 +157,98 @@ router.post('/signup', (req, res) => {
     }
 });
 
-//Subir información al NFS
+//Estados
+router.post('/estados', (req, res) => {
+    try {
+        const idPais = parseInt(req.body.idPais, 10);
+
+        console.log(idPais);
+        
+        // Cargar usuarios desde el NFS
+        const data = loadJSON('Estado.json');
+        const estados = data.Estados;
+
+        // Filtrar estados del país
+        const estadosPais = estados.filter(estado => estado.IdPais === idPais);
+
+        console.log(estadosPais);
+
+        // Enviar estados al usuario
+        res.json(estadosPais);
+
+    } catch (error) {
+        console.error('Error during getting states:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
+
+//Subir noticia
+router.post('/subirNoticia', (req, res) => {
+    try {
+        const { titulo, contenido, fechaPublic, idCategoria, idIdioma,idPais,idEstado,lugar, idUser,imagen} = req.body;
+
+        if (!titulo || !contenido || !fechaPublic || !idCategoria || !idIdioma || !idPais || !idEstado || !lugar || !idUser || !imagen) {
+            return res.status(400).json({ error: 'Faltan datos requeridos.' });
+        }
+    
+        // Cargar noticias y lugares
+        const dataN = loadJSON('Noticia.json');
+        const dataL = loadJSON('Lugar.json');
+        const noticias = dataN.Noticias;
+        const lugares = dataL.Lugares;
+        let lugarId = 0
+
+        //Verificar si el lugar ya existe
+        const lugarExistente = lugares.find(l => l.Nombre.toLowerCase() === lugar.toLowerCase());
+        if (lugarExistente) {
+            console.log("lugar encontrado" + lugarExistente.Nombre);
+            lugarId = lugarExistente.IdLugar;
+        }else{
+            //crear un nuevo lugar
+            const nuevoIdL = lugares.length > 0 ? Math.max(...lugares.map(l => l.IdLugar)) + 1 : 1;
+            lugarId = nuevoIdL;
+            console.log("no existe el lugar, se ha creado uno nuevo "+ nuevoIdL);
+            const newLugar = {
+                IdLugar: nuevoIdL,
+                Nombre: lugar,
+                IdEstado:idEstado,
+            };
+            // Agregar el nuevo lugar al json
+            lugares.push(newLugar);
+            saveJSON('Lugar.json', { Lugares: lugares });
+        }
+
+        // Generar un nuevo ID para la noticia y para el lugar
+        const nuevoIdN = noticias.length > 0 ? Math.max(...noticias.map(u => u.IdNoticia)) + 1 : 1;
+
+        // Crear noticia
+        const newNoticia = {
+            IdNoticia: nuevoIdN,
+            Titulo: titulo,
+            Contenido:contenido,
+            FechaPublic:fechaPublic,
+            Imagen: imagen,
+            IdLugar: lugarId,
+            IdPais:idPais,
+            IdUsuario:idUser,
+            IdCategoria:idCategoria,
+            IdIdioma:idIdioma,
+            NumLikes:0,
+        };
+
+        // Agregar la nueva noticia al json
+        noticias.push(newNoticia);
+
+        // Guardar los datos actualizados en el archivo JSON
+        saveJSON('Noticia.json', { Noticias: noticias });
+
+        // Enviar respuesta al usuario
+        res.json({ success: true});
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
 
 
 //Nube

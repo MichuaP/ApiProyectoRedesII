@@ -1,47 +1,30 @@
 {
-    "Noticias": [
-      {
-        "IdNoticia": 1,
-        "Titulo": "Nuevo avance en la tecnología de inteligencia artificial",
-        "Contenido": "En los últimos años, la inteligencia artificial ha experimentado un desarrollo acelerado, con nuevas aplicaciones en sectores como la medicina, la educación y la automoción. Este avance promete transformar diversas industrias.",
-        "FechaPublic": "2024-12-07",
-        "Imagen":"ia.jpg",
-        "IdPeriodico": 1,
-        "IdLugar": 1,
-        "IdPais": 1,
-        "IdUsuario": 2,
-        "IdCategoria": 3,
-        "IdIdioma": 1,
-        "NumLikes": 0
-      },
-      {
-        "IdNoticia": 2,
-        "Titulo": "Impacto del cambio climático en las ciudades costeras",
-        "Contenido": "Las ciudades costeras enfrentan riesgos crecientes debido al cambio climático, con inundaciones y tormentas más intensas. Expertos advierten sobre la necesidad urgente de políticas de adaptación y mitigación.",
-        "FechaPublic": "2024-12-06",
-        "Imagen":"cambio.jpg",
-        "IdPeriodico": 2,
-        "IdLugar": 3,
-        "IdPais": 2,
-        "IdUsuario": 2,
-        "IdCategoria": 2,
-        "IdIdioma": 1,
-        "NumLikes": 0
-      },
-      {
-        "IdNoticia": 3,
-        "Titulo": "Descubren una nueva especie de dinosaurio en Sudamérica",
-        "Contenido": "Paleontólogos han descubierto una nueva especie de dinosaurio en la Patagonia. Este hallazgo aporta nueva información sobre la diversidad de los dinosaurios en el Cretácico.",
-        "FechaPublic": "2024-12-05",
-        "Imagen":"dinosaurio.jpg",
-        "IdPeriodico": 791,
-        "IdLugar": 4,
-        "IdPais": 2,
-        "IdUsuario": 3,
-        "IdCategoria": 4,
-        "IdIdioma": 1,
-        "NumLikes": 0
-      }
-    ]
-  }
-  
+  "Noticias": [
+    {
+      "IdNoticia": 1,
+      "Titulo": "Nuevo avance en la tecnología de inteligencia artificial",
+      "Contenido": "En los últimos años, la inteligencia artificial ha experimentado un desarrollo acelerado, con nuevas aplicaciones en sectores como la medicina, la educación y la automoción. Este avance promete transformar diversas industrias.",
+      "FechaPublic": "2024-12-07",
+      "Imagen": "ia.jpg",
+      "IdLugar": 1,
+      "IdPais": 1,
+      "IdUsuario": 2,
+      "IdCategoria": 3,
+      "IdIdioma": 1,
+      "NumLikes": 0
+    },
+    {
+      "IdNoticia": 2,
+      "Titulo": "Impacto del cambio climático en las ciudades costeras",
+      "Contenido": "Las ciudades costeras enfrentan riesgos crecientes debido al cambio climático, con inundaciones y tormentas más intensas. Expertos advierten sobre la necesidad urgente de políticas de adaptación y mitigación.",
+      "FechaPublic": "2024-12-06",
+      "Imagen": "cambio.jpg",
+      "IdLugar": 3,
+      "IdPais": 2,
+      "IdUsuario": 2,
+      "IdCategoria": 2,
+      "IdIdioma": 1,
+      "NumLikes": 0
+    }
+  ]
+}
