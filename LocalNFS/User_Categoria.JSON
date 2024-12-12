@@ -1,44 +1,64 @@
 {
-    "User_Categorias": [
-        {
-            "IdUser": 2,
-            "IdCategoria": 1
-        },
-        {
-            "IdUser": 2,
-            "IdCategoria": 3
-        },
-        {
-            "IdUser": 2,
-            "IdCategoria": 5
-        },
-        {
-            "IdUser": 2,
-            "IdCategoria": 7
-        },
-        {
-            "IdUser": 2,
-            "IdCategoria": 10
-        },
-        {
-            "IdUser": 3,
-            "IdCategoria": 2
-        },
-        {
-            "IdUser": 3,
-            "IdCategoria": 4
-        },
-        {
-            "IdUser": 3,
-            "IdCategoria": 6
-        },
-        {
-            "IdUser": 3,
-            "IdCategoria": 8
-        },
-        {
-            "IdUser": 3,
-            "IdCategoria": 9
-        }
-    ]
+  "User_Categorias": [
+    {
+      "IdUser": 2,
+      "IdCategoria": 1
+    },
+    {
+      "IdUser": 2,
+      "IdCategoria": 3
+    },
+    {
+      "IdUser": 2,
+      "IdCategoria": 5
+    },
+    {
+      "IdUser": 2,
+      "IdCategoria": 7
+    },
+    {
+      "IdUser": 2,
+      "IdCategoria": 10
+    },
+    {
+      "IdUser": 3,
+      "IdCategoria": 2
+    },
+    {
+      "IdUser": 3,
+      "IdCategoria": 4
+    },
+    {
+      "IdUser": 3,
+      "IdCategoria": 6
+    },
+    {
+      "IdUser": 3,
+      "IdCategoria": 8
+    },
+    {
+      "IdUser": 3,
+      "IdCategoria": 9
+    },
+    {
+      "IdUser": 8,
+      "IdCategoria": [
+        [
+          1,
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "IdUser": 9,
+      "IdCategoria": [
+        [
+          2,
+          5,
+          8
+        ]
+      ]
+    }
+  ]
 }

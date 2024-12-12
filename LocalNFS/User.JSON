@@ -59,6 +59,36 @@
       "Contrasena": "maria123",
       "Correo": "maria@gmail.com",
       "TipoUsuario": 1
+    },
+    {
+      "IdUser": 7,
+      "Nombre": "Pedro",
+      "ApePat": "Pascal",
+      "ApeMat": "Miranda",
+      "Alias": "pedro",
+      "Contrasena": "pedro123",
+      "Correo": "pedro@gmail.com",
+      "TipoUsuario": 1
+    },
+    {
+      "IdUser": 8,
+      "Nombre": "Juan",
+      "ApePat": "Pascal",
+      "ApeMat": "Miranda",
+      "Alias": "juan",
+      "Contrasena": "juan12",
+      "Correo": "juan@gmail.com",
+      "TipoUsuario": 1
+    },
+    {
+      "IdUser": 9,
+      "Nombre": "Montse",
+      "ApePat": "Acosta",
+      "ApeMat": "Miranda",
+      "Alias": "mont",
+      "Contrasena": "mont123",
+      "Correo": "montse@gmail.com",
+      "TipoUsuario": 1
     }
   ]
 }

@@ -250,6 +250,37 @@ router.post('/subirNoticia', (req, res) => {
     }
 });
 
+router.post('/guardarPreferencias', (req, res) => {
+    try {
+        const { idUser, idCategoria } = req.body;
+
+        if (!idUser || !idCategoria) {
+            return res.status(400).json({ error: 'Faltan datos requeridos (idUser, idCategoria)' });
+        }
+
+        // Cargar los datos existentes
+        const data = loadJSON('User_Categoria.json');
+        const userCategorias = data.User_Categorias;
+
+        // Verificar si la combinación ya existe
+        const existe = userCategorias.some(uc => uc.IdUser === idUser && uc.IdCategoria === idCategoria);
+        if (existe) {
+            return res.status(400).json({ error: 'La preferencia ya existe' });
+        }
+
+        // Crear nueva preferencia
+        const newUserCategoria = { IdUser: idUser, IdCategoria: idCategoria };
+        userCategorias.push(newUserCategoria);
+
+        // Guardar los datos actualizados
+        saveJSON('User_Categoria.json', { User_Categorias: userCategorias });
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error al guardar preferencias:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
 
 //Nube
 
