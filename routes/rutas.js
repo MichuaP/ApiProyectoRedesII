@@ -1,18 +1,44 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 require('dotenv').config(); // Para variables de entorno
-
-const fs = require('fs'); //Files
-const path = require('path'); 
 
 router.use(bodyParser.urlencoded({extended:false}));
 router.use(bodyParser.json());
 
+// Configuración del multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadPath = path.join(__dirname, '../LocalNFS/img/'); // Carpeta de destino
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+            console.log("no existe carpeta");
+        }
+        cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}-${file.originalname}`;
+        cb(null, uniqueName);
+    }
+});
+const upload = multer({ storage });
+
+// Endpoint para subir una imagen
+router.post('/upload-image', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'No se ha subido ningún archivo.' });
+    }
+    const filePath = `/img/${req.file.filename}`;
+    res.status(200).json({ message: 'Imagen subida con éxito.', filePath });
+});
+
 router.get('/', (req, res) => {
     res.send('¡Hola mundo!');
-  });
+});
 
 
 //Obtener información del NFS

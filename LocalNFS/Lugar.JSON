@@ -49,6 +49,31 @@
       "IdLugar": 10,
       "Nombre": "Toronto",
       "IdEstado": 4
+    },
+    {
+      "IdLugar": 11,
+      "Nombre": "El puerto",
+      "IdEstado": 2
+    },
+    {
+      "IdLugar": 12,
+      "Nombre": "la esquina",
+      "IdEstado": 4
+    },
+    {
+      "IdLugar": 13,
+      "Nombre": "La tienda",
+      "IdEstado": 3
+    },
+    {
+      "IdLugar": 14,
+      "Nombre": "en alguna parte",
+      "IdEstado": 4
+    },
+    {
+      "IdLugar": 15,
+      "Nombre": "dd",
+      "IdEstado": 12
     }
   ]
 }
