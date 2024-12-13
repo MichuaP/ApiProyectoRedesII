@@ -109,6 +109,16 @@
       "Contrasena": "cyb123",
       "Correo": "cybil@gmail.com",
       "TipoUsuario": 1
+    },
+    {
+      "IdUser": 12,
+      "Nombre": "James",
+      "ApePat": "Sunderland",
+      "ApeMat": "Hill",
+      "Alias": "James",
+      "Contrasena": "james123",
+      "Correo": "james@gmail.com",
+      "TipoUsuario": 1
     }
   ]
 }

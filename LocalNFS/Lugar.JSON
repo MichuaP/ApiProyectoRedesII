@@ -49,6 +49,11 @@
       "IdLugar": 10,
       "Nombre": "Toronto",
       "IdEstado": 4
+    },
+    {
+      "IdLugar": 11,
+      "Nombre": "UAA",
+      "IdEstado": 1
     }
   ]
 }

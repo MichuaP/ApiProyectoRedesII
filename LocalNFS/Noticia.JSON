@@ -25,6 +25,19 @@
       "IdCategoria": 2,
       "IdIdioma": 1,
       "NumLikes": 0
+    },
+    {
+      "IdNoticia": 3,
+      "Titulo": "Estrés Académico y Calvicie",
+      "Contenido": "Investigadores de la Universidad de X han hallado una relación preocupante entre el estrés académico y la calvicie prematura en estudiantes universitarios. Según un estudio reciente, el estrés extremo causado por la presión de exámenes, el trabajo excesivo, la falta de sueño y la ansiedad puede inducir el fenómeno conocido como telógeno efluvio, una condición en la que el cuerpo experimenta una pérdida anormal de cabello.",
+      "FechaPublic": "2024-12-12",
+      "Imagen": "/img/1734060463783-pelona.jpg",
+      "IdLugar": 11,
+      "IdPais": 1,
+      "IdUsuario": 3,
+      "IdCategoria": 14,
+      "IdIdioma": 1,
+      "NumLikes": 0
     }
   ]
 }
