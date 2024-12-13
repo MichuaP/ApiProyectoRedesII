@@ -89,6 +89,26 @@
       "Contrasena": "mont123",
       "Correo": "montse@gmail.com",
       "TipoUsuario": 1
+    },
+    {
+      "IdUser": 10,
+      "Nombre": "Angela",
+      "ApePat": "Orosco",
+      "ApeMat": "Miranda",
+      "Alias": "angela",
+      "Contrasena": "angela123",
+      "Correo": "angela@gmail.com",
+      "TipoUsuario": 1
+    },
+    {
+      "IdUser": 11,
+      "Nombre": "Cybil",
+      "ApePat": "Benett",
+      "ApeMat": "Sh",
+      "Alias": "cybil",
+      "Contrasena": "cyb123",
+      "Correo": "cybil@gmail.com",
+      "TipoUsuario": 1
     }
   ]
 }

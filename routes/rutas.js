@@ -91,6 +91,7 @@ router.get('/myNews', (req, res) => {
 });
 
 //Login
+
 router.post('/login', (req, res) => {
     try {
         const { correo, contrasena } = req.body;
@@ -100,6 +101,7 @@ router.post('/login', (req, res) => {
 
         // Cargar usuarios desde el NFS
         const usuarios = loadJSON('User.json').Users;
+        const userCategorias = loadJSON('User_Categoria.json').User_Categorias;
 
         // Buscar usuario por alias
         const usuario = usuarios.find(u => u.Correo === correo);
@@ -122,10 +124,14 @@ router.post('/login', (req, res) => {
             Tipo: usuario.TipoUsuario
         };
 
-        console.log(usuarioData.Alias+"data");
+        // Obtener las categorías del usuario
+        const categoriasUsuario = userCategorias.find(uc => uc.IdUser === usuarioData.IdUser)?.IdCategoria || [];
+
+        // Imprimir las categorías del usuario en la terminal del servidor
+        console.log(`Categorías del usuario ${usuarioData.Alias}:`, categoriasUsuario);
 
         // Enviar datos del usuario
-        res.json({ success: true, usuario: usuarioData });
+        res.json({ success: true, usuario: usuarioData, categorias: categoriasUsuario });
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Error del servidor' });
@@ -276,6 +282,7 @@ router.post('/subirNoticia', (req, res) => {
     }
 });
 
+// Guardar preferencias
 router.post('/guardarPreferencias', (req, res) => {
     try {
         const { idUser, idCategoria } = req.body;
@@ -287,6 +294,7 @@ router.post('/guardarPreferencias', (req, res) => {
         // Cargar los datos existentes
         const data = loadJSON('User_Categoria.json');
         const userCategorias = data.User_Categorias;
+        
 
         // Verificar si la combinación ya existe
         const existe = userCategorias.some(uc => uc.IdUser === idUser && uc.IdCategoria === idCategoria);
