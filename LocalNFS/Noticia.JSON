@@ -25,32 +25,6 @@
       "IdCategoria": 2,
       "IdIdioma": 1,
       "NumLikes": 0
-    },
-    {
-      "IdNoticia": 3,
-      "Titulo": "Nueva noticia",
-      "Contenido": "Nueva noticia",
-      "FechaPublic": "2024-12-13",
-      "Imagen": "/img/arcane2.jpg",
-      "IdLugar": 11,
-      "IdPais": 1,
-      "IdUsuario": 2,
-      "IdCategoria": 1,
-      "IdIdioma": 2,
-      "NumLikes": 0
-    },
-    {
-      "IdNoticia": 4,
-      "Titulo": "d",
-      "Contenido": "d",
-      "FechaPublic": "2024-12-13",
-      "Imagen": "/img/1734055009686-whats.png",
-      "IdLugar": 15,
-      "IdPais": 1,
-      "IdUsuario": 2,
-      "IdCategoria": 9,
-      "IdIdioma": 1,
-      "NumLikes": 0
     }
   ]
 }
