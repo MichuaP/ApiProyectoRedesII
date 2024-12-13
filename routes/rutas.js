@@ -282,6 +282,58 @@ router.post('/guardarPreferencias', (req, res) => {
     }
 });
 
+//Obtener noticias subidas en una localidad
+router.get('/comuNews', (req, res) => {
+    try {
+        // Obtener información de los parámetros de consulta
+        const idPais = parseInt(req.query.idPais, 10);
+        const idEstado = parseInt(req.query.idEstado, 10);
+
+        console.log("idPais: " + idPais);
+        console.log("idEstado: " + idEstado);
+
+        //Cargar JSON
+        let noticias = loadJSON('Noticia.json').Noticias;
+        const paises = loadJSON('Pais.json').Paises;
+        const estados = loadJSON('Estado.json').Estados;
+        const lugares = loadJSON('Lugar.json').Lugares;
+        const categorias = loadJSON('Categoria.json').Categorias;
+        const idiomas = loadJSON('Idioma.json').Idiomas;
+
+        // Filtrar por país y estado
+        if (idPais) {
+            noticias = noticias.filter(noticia => noticia.IdPais === idPais);
+        }
+        // Filtrar por lugar
+        if (idEstado) {
+            noticias = noticias.filter(noticia => {
+                const lugar = lugares.find(l => l.IdLugar === noticia.IdLugar);
+                return lugar && lugar.IdEstado === idEstado;
+            });
+        }
+
+        // Mapear las referencias de los datos de noticias
+        const noticiasCompletas = noticias.map((noticia) => {
+            const lugar = lugares.find(l => l.IdLugar === noticia.IdLugar);
+            return {
+                ...noticia,
+                Pais: paises.find(p => p.IdPais === noticia.IdPais)?.Nombre || "Desconocido",
+                Estado: lugar ? estados.find(e => e.IdEstado === lugar.IdEstado)?.Nombre : "Desconocido",
+                Lugar: lugar ? lugar.Nombre : "Desconocido",
+                Categoria: categorias.find(c => c.IdCategoria === noticia.IdCategoria)?.Nombre || "Desconocido",
+                Idioma: idiomas.find(i => i.IdIdioma === noticia.IdIdioma)?.Nombre || "Desconocido"
+            };
+        });
+
+        console.log(noticiasCompletas);
+
+        res.json(noticiasCompletas);
+    } catch (error) {
+        console.error('Error loading data:', error);
+        res.status(500).json({ error: 'Failed to load data' });
+    }
+});
+
 //Nube
 
 
