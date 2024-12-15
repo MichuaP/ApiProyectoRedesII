@@ -29,7 +29,7 @@ const encryptAllDataInJSON = () => {
             console.error('Error al parsear el JSON existente:', error);
             return;
         }
-        // Cifrar los datos del JSON (no solo la contraseña, sino todo el contenido)
+        // Cifrar los datos del JSON
         const encryptedData = encrypt(jsonData);
         // Guardar los datos cifrados de vuelta en el archivo
         fs.writeFileSync(filePath, encryptedData, 'utf8');
@@ -38,7 +38,6 @@ const encryptAllDataInJSON = () => {
         console.log('El archivo no existe.');
     }
 };
-
 // Llamar a la función para cifrar los datos actuales
 //encryptAllDataInJSON();
 
@@ -56,9 +55,8 @@ const loadData = (fileName) => {
         return {};
     }
 };
-const users = loadData('User_Categoria.JSON'); //Nombre del json a mostrar
-console.log(users);
-
+//const users = loadData('User_Categoria.JSON'); //Nombre del json a mostrar
+//console.log(users);
 
 // Configuración del multer
 const storage = multer.diskStorage({
@@ -90,24 +88,18 @@ router.get('/', (req, res) => {
     res.send('¡Hola mundo!');
 });
 
-
 //Obtener información del NFS y desencriptar
 const loadJSON = (fileName) => {
     const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
-
     const encryptedData = fs.readFileSync(filePath, 'utf8');
-
     return decrypt(encryptedData);
-
 };
 
 //Guardar datos JSON en un archivo y encriptar
 const saveJSON = (fileName, data) => {
     const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
-
     // Cifrar los datos antes de guardarlos
     const encryptedData = encrypt(data);
-
     // Guardar los datos cifrados en el archivo
     fs.writeFileSync(filePath, encryptedData, 'utf-8');
     console.log('Datos cifrados guardados correctamente.');
