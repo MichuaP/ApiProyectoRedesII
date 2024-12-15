@@ -4,11 +4,61 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { encrypt, decrypt } = require('../cryptoUtils');
+const CryptoJS = require('crypto-js');
+
+// CLave ContraFront
+const ENCRYPTION_KEYC = '35224252703265875843711068151088';
 
 require('dotenv').config(); // Para variables de entorno
 
 router.use(bodyParser.urlencoded({extended:false}));
 router.use(bodyParser.json());
+
+//Cifrar datos de un JSON
+const encryptAllDataInJSON = () => {
+    const filePath = path.join('../ApiProyectoRedesII/LocalNFS', 'User.json');
+    // Verificar si el archivo existe
+    if (fs.existsSync(filePath)) {
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        // Intentar parsear el archivo como JSON
+        let jsonData;
+        try {
+            jsonData = JSON.parse(fileData);
+        } catch (error) {
+            console.error('Error al parsear el JSON existente:', error);
+            return;
+        }
+        // Cifrar los datos del JSON (no solo la contraseña, sino todo el contenido)
+        const encryptedData = encrypt(jsonData);
+        // Guardar los datos cifrados de vuelta en el archivo
+        fs.writeFileSync(filePath, encryptedData, 'utf8');
+        console.log('Datos cifrados y guardados correctamente.');
+    } else {
+        console.log('El archivo no existe.');
+    }
+};
+
+// Llamar a la función para cifrar los datos actuales
+//encryptAllDataInJSON();
+
+//Mostrar info de un JSON
+const loadData = (fileName) => {
+    const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
+    // Leer los datos cifrados del archivo
+    const encryptedData = fs.readFileSync(filePath, 'utf8');
+    // Desencriptar los datos
+    try {
+        const decryptedData = decrypt(encryptedData);
+        return decryptedData;
+    } catch (error) {
+        console.error('Error al desencriptar los datos:', error);
+        return {};
+    }
+};
+const users = loadData('User_Categoria.JSON'); //Nombre del json a mostrar
+console.log(users);
+
 
 // Configuración del multer
 const storage = multer.diskStorage({
@@ -41,16 +91,26 @@ router.get('/', (req, res) => {
 });
 
 
-//Obtener información del NFS
+//Obtener información del NFS y desencriptar
 const loadJSON = (fileName) => {
     const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+    const encryptedData = fs.readFileSync(filePath, 'utf8');
+
+    return decrypt(encryptedData);
+
 };
 
-//Guardar datos JSON en un archivo
+//Guardar datos JSON en un archivo y encriptar
 const saveJSON = (fileName, data) => {
     const filePath = path.join("../ApiProyectoRedesII/LocalNFS", fileName);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+
+    // Cifrar los datos antes de guardarlos
+    const encryptedData = encrypt(data);
+
+    // Guardar los datos cifrados en el archivo
+    fs.writeFileSync(filePath, encryptedData, 'utf-8');
+    console.log('Datos cifrados guardados correctamente.');
 };
 
 //Obtener noticias subidas por un usuario
@@ -91,13 +151,16 @@ router.get('/myNews', (req, res) => {
 });
 
 //Login
-
 router.post('/login', (req, res) => {
     try {
         const { correo, contrasena } = req.body;
 
-        console.log(correo);
-        console.log(contrasena);
+        console.log("correo:"+correo);
+        console.log("Contraseña encriptada recibida:", contrasena);
+
+        // Desencriptar la contraseña
+        const bytes = CryptoJS.AES.decrypt(contrasena, ENCRYPTION_KEYC);
+        const contrasenaDF = bytes.toString(CryptoJS.enc.Utf8);
 
         // Cargar usuarios desde el NFS
         const usuarios = loadJSON('User.json').Users;
@@ -109,9 +172,13 @@ router.post('/login', (req, res) => {
         if (!usuario) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
+        
+        // Desencriptar la contraseña
+        const bytes2 = CryptoJS.AES.decrypt(usuario.Contrasena, ENCRYPTION_KEYC);
+        const contrasenaDB = bytes2.toString(CryptoJS.enc.Utf8);
 
-        // Verificar contraseña (por ahora, texto plano)
-        if (usuario.Contrasena !== contrasena) {
+        // Verificar contraseña
+        if (contrasenaDF !== contrasenaDB) {
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
 
@@ -145,10 +212,6 @@ router.post('/signup', (req, res) => {
 
         console.log(correo);
         console.log(contrasena);
-        console.log(apem);
-        console.log(apep);
-        console.log(alias);
-        console.log(nombre);
 
         // Cargar usuarios desde el NFS
         const data = loadJSON('User.json');
