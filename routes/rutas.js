@@ -368,8 +368,46 @@ router.get('/comuNews', (req, res) => {
     }
 });
 
-//Nube
+// Agregar a favoritos
+router.post('/agregarFavorito', (req, res) => {
+    try {
+        const { title, abstract, imageUrl, publishedDate, sectionNumber, idUser } = req.body;
 
+        if (!title || !abstract || !publishedDate || !idUser || !imageUrl) {
+            return res.status(400).json({ error: 'Faltan datos requeridos.' });
+        }
 
+        // Cargar noticias
+        const dataN = loadJSON('Noticia.json');
+        const noticias = dataN.Noticias;
+
+        // Generar un nuevo ID para la noticia
+        const nuevoIdN = noticias.length > 0 ? Math.max(...noticias.map(u => u.IdNoticia)) + 1 : 1;
+
+        // Crear noticia para favoritos
+        const newNoticia = {
+            IdNoticia: nuevoIdN,
+            Titulo: title,
+            Contenido: abstract,
+            FechaPublic: publishedDate,
+            Imagen: imageUrl,
+            IdUsuario: idUser,
+            IdLugar: null,
+            IdPais: null,
+            IdCategoria: sectionNumber,
+            IdIdioma: 2,
+            NumLikes: 0
+        };
+
+        // Agregar la nueva noticia a la lista de favoritos
+        noticias.push(newNoticia);
+        saveJSON('Noticia.json', { Noticias: noticias });
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
 
 module.exports = router;
