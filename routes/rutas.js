@@ -301,6 +301,56 @@ router.post('/signup', (req, res) => {
     }
 });
 
+//signup para la app
+router.post('/signupApp', (req, res) => {
+    try {
+        const { correo, contrasena, apem, apep, alias, nombre } = req.body;
+
+        console.log("Correo:", correo);
+        console.log("Contraseña recibida:", contrasena);
+
+        // Cargar usuarios desde el NFS
+        const data = loadJSON('User.json');
+        const usuarios = data.Users;
+
+        // Verificar si el usuario ya existe por correo
+        const usuarioExistente = usuarios.find(u => u.Correo === correo);
+        if (usuarioExistente) {
+            return res.json({ success: false, error: 'El usuario ya existe' });
+        }
+
+        // Generar un nuevo ID para el usuario
+        const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.IdUser)) + 1 : 1;
+
+        // Cifrar la contraseña antes de guardarla
+        const encryptedPassword = CryptoJS.AES.encrypt(contrasena, ENCRYPTION_KEYC).toString();
+
+        // Crear usuario
+        const newUser = {
+            IdUser: nuevoId,
+            Nombre: nombre,
+            ApePat: apep,
+            ApeMat: apem,
+            Alias: alias,
+            Contrasena: encryptedPassword,
+            Correo: correo,
+            TipoUsuario: 1
+        };
+
+        // Agregar el nuevo usuario a la lista
+        usuarios.push(newUser);
+
+        // Guardar los datos actualizados en el archivo JSON
+        saveJSON('User.json', { Users: usuarios });
+
+        // Enviar datos del usuario
+        res.json({ success: true, usuario: { IdUser: newUser.IdUser, Nombre: newUser.Nombre, Alias: newUser.Alias, Correo: newUser.Correo } });
+    } catch (error) {
+        console.error('Error during signupApp:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
+
 //Estados
 router.post('/estados', (req, res) => {
     try {
