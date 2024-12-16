@@ -309,9 +309,12 @@ router.post('/signupApp', (req, res) => {
         console.log("Correo:", correo);
         console.log("Contraseña recibida:", contrasena);
 
-        // Cargar usuarios desde el NFS
-        const data = loadJSON('User.json');
-        const usuarios = data.Users;
+        // Cargar usuarios y categorías desde los archivos JSON
+        const dataUsuarios = loadJSON('User.json');
+        const usuarios = dataUsuarios.Users;
+
+        const dataCategorias = loadJSON('User_Categoria.json');
+        const userCategorias = dataCategorias.User_Categorias; // Ahora está definida
 
         // Verificar si el usuario ya existe por correo
         const usuarioExistente = usuarios.find(u => u.Correo === correo);
@@ -343,8 +346,27 @@ router.post('/signupApp', (req, res) => {
         // Guardar los datos actualizados en el archivo JSON
         saveJSON('User.json', { Users: usuarios });
 
+        // Agregar preferencias predeterminadas al nuevo usuario
+        const preferenciasPredeterminadas = [1, 3, 5, 10]; // Preferencias predeterminadas para usuarios de la app
+        const newUserCategoria = {
+            IdUser: nuevoId,
+            IdCategoria: [preferenciasPredeterminadas] // Estructura del JSON
+        };
+
+        // Agregar al JSON de categorías
+        userCategorias.push(newUserCategoria);
+        saveJSON('User_Categoria.json', { User_Categorias: userCategorias });
+
         // Enviar datos del usuario
-        res.json({ success: true, usuario: { IdUser: newUser.IdUser, Nombre: newUser.Nombre, Alias: newUser.Alias, Correo: newUser.Correo } });
+        res.json({
+            success: true,
+            usuario: {
+                IdUser: newUser.IdUser,
+                Nombre: newUser.Nombre,
+                Alias: newUser.Alias,
+                Correo: newUser.Correo
+            }
+        });
     } catch (error) {
         console.error('Error during signupApp:', error);
         res.status(500).json({ error: 'Error del servidor' });
