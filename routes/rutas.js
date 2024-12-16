@@ -154,6 +154,8 @@ router.post('/login', (req, res) => {
         const bytes = CryptoJS.AES.decrypt(contrasena, ENCRYPTION_KEYC);
         const contrasenaDF = bytes.toString(CryptoJS.enc.Utf8);
 
+        console.log("Contraseña desencriptada:", contrasenaDF);
+
         // Cargar usuarios desde el NFS
         const usuarios = loadJSON('User.json').Users;
         const userCategorias = loadJSON('User_Categoria.json').User_Categorias;
@@ -168,9 +170,64 @@ router.post('/login', (req, res) => {
         // Desencriptar la contraseña
         const bytes2 = CryptoJS.AES.decrypt(usuario.Contrasena, ENCRYPTION_KEYC);
         const contrasenaDB = bytes2.toString(CryptoJS.enc.Utf8);
+        console.log("Contraseña desencriptada:", contrasenaDB);
 
         // Verificar contraseña
         if (contrasenaDF !== contrasenaDB) {
+            console.log("Contraseña incorrecta");
+            return res.status(401).json({ error: 'Contraseña incorrecta' });
+        }
+
+        // Crear sesión de usuario
+        const usuarioData = {
+            IdUser: usuario.IdUser,
+            Nombre: usuario.Nombre,
+            Alias: usuario.Alias,
+            Correo: usuario.Correo,
+            Tipo: usuario.TipoUsuario
+        };
+
+        // Obtener las categorías del usuario
+        const categoriasUsuario = userCategorias.find(uc => uc.IdUser === usuarioData.IdUser)?.IdCategoria || [];
+
+        // Imprimir las categorías del usuario en la terminal del servidor
+        console.log(`Categorías del usuario ${usuarioData.Alias}:`, categoriasUsuario);
+
+        // Enviar datos del usuario
+        res.json({ success: true, usuario: usuarioData, categorias: categoriasUsuario });
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ error: 'Error del servidor' });
+    }
+});
+
+//Login para la app
+router.post('/loginApp', (req, res) => {
+    try {
+        const { correo, contrasena } = req.body;
+
+        console.log("correo:"+correo);
+        console.log("Contraseña recibida:", contrasena);
+
+        // Cargar usuarios desde el NFS
+        const usuarios = loadJSON('User.json').Users;
+        const userCategorias = loadJSON('User_Categoria.json').User_Categorias;
+
+        // Buscar usuario por alias
+        const usuario = usuarios.find(u => u.Correo === correo);
+
+        if (!usuario) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+        
+        // Desencriptar la contraseña
+        const bytes2 = CryptoJS.AES.decrypt(usuario.Contrasena, ENCRYPTION_KEYC);
+        const contrasenaDB = bytes2.toString(CryptoJS.enc.Utf8);
+        console.log("Contraseña desencriptada:", contrasenaDB);
+
+        // Verificar contraseña
+        if (contrasena !== contrasenaDB) {
+            console.log("Contraseña incorrecta");
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
 
