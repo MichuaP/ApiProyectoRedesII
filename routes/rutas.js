@@ -347,7 +347,7 @@ router.post('/signupApp', (req, res) => {
         saveJSON('User.json', { Users: usuarios });
 
         // Agregar preferencias predeterminadas al nuevo usuario
-        const preferenciasPredeterminadas = [1, 3, 5, 10]; // Preferencias predeterminadas para usuarios de la app
+        const preferenciasPredeterminadas = [1, 3, 7, 12]; // Preferencias predeterminadas para usuarios de la app
         const newUserCategoria = {
             IdUser: nuevoId,
             IdCategoria: [preferenciasPredeterminadas] // Estructura del JSON
